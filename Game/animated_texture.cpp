@@ -19,7 +19,7 @@ void Animated_Texture::set_frame(Uint32 total_time_milliseconds)
 	_current_frame = (total_time_milliseconds / _frame_duration_milliseconds) % _frame_count;
 }
 
-void Animated_Texture::render(SDL_Renderer* renderer, SDL_Rect*, SDL_Rect* destination, SDL_RendererFlip flip) 
+void Animated_Texture::render(SDL_Renderer* renderer, SDL_Rect*, SDL_Rect* destination, SDL_RendererFlip flip, double angle) 
 {
 
 	// Calculate clip coordinates of texture
@@ -37,6 +37,6 @@ void Animated_Texture::render(SDL_Renderer* renderer, SDL_Rect*, SDL_Rect* desti
 	frame_clip.x = _current_frame * frame_width;
 	frame_clip.y = 0;
 
-	Texture::render(renderer, &frame_clip, destination, flip);
+	Texture::render(renderer, &frame_clip, destination, flip, angle);
 
 }

@@ -18,6 +18,16 @@ public:
 	Game_Object(std::string id, std::string texture_id);
 	~Game_Object();
 
+
+	enum class State
+	{
+		Idle,
+		Walking,
+		Running,
+		Sliding,
+		Dying
+	};
+
 	std::string id();
 	Vector_2D translation();
 	void set_translation(Vector_2D translation);
@@ -42,6 +52,8 @@ protected:
 
 	Vector_2D _translation; // Current pos 
 	Vector_2D _velocity;	// Direction & speed
+
+	double _angle;
 	
 	int _width;
 	int _height;

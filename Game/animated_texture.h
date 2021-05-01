@@ -17,7 +17,7 @@ public:
 	~Animated_Texture();
 
 	void set_frame(Uint32 total_time_milliseconds);
-	void render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip) override;
+	void render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip, double angle) override;
 
 private: 
 	int _frame_count;

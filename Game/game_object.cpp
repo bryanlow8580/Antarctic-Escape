@@ -12,11 +12,10 @@ Game_Object::Game_Object(std::string id, std::string texture_id)
 	_id			= id;
 	_texture_id = texture_id;
 
-	//_x = 0;
-	//_y = 0;
-
 	_width  = 100;
 	_height = 100;
+
+	_angle = 0;
 
 	_flip = SDL_FLIP_NONE;
 }
@@ -84,8 +83,6 @@ void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Sce
 		if (intersection_depth > 0.0f) 
 		{
 
-			std::cout << "HELP IM COLLIDING " << std::endl;
-
 			// pushes objects away from each other if intersecting / colliding
 			Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
 			other_collider_to_collider.normalize();
@@ -110,7 +107,7 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 	destination.w = _width;
 	destination.h = _height;
 
-	const float PI = 3.14159265f;
+	/*const float PI = 3.14159265f;
 	if (_velocity.magnitude() > 0) 
 	{
 		if (abs(_velocity.angle()) <= (PI / 2.f)) 
@@ -121,10 +118,10 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 		{
 			_flip = SDL_FLIP_HORIZONTAL;
 		}
-	}
+	}*/
 
 	Texture* texture = (Texture*)assets->get_asset(_texture_id);
-	texture->render(renderer, nullptr, &destination, _flip);
+	texture->render(renderer, nullptr, &destination, SDL_FLIP_NONE, _angle);
 
 	if (config->should_display_ids) 
 	{
@@ -146,11 +143,15 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 		text_color.b = 0;
 		text_color.a = 255;
 
-		std::string position = std::to_string(_translation.x()) + ", "+ std::to_string(_translation.y());
+		std::string position = std::to_string(_translation.x() - scene->camera_translation().x()) + ", "+ std::to_string(_translation.y() - scene->camera_translation().y());
+		std::string angle = std::to_string(_angle);
 
 		Text id(renderer, position.c_str(), text_color, "ID.Text");
 
 		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height + 15));
+
+		Text angle_text(renderer, angle.c_str(), text_color, "Angle.Text");
+		angle_text.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height - 15));
 	}
 
 	if (config->should_display_colliders && _collider.radius() > 0.f) 
@@ -163,6 +164,6 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 		collider_destination.w = (int)(_collider.radius() * 2.0f);
 		collider_destination.h = (int)(_collider.radius() * 2.0f);
 
-		collider_texture->render(renderer, nullptr, &collider_destination, SDL_FLIP_NONE);
+		collider_texture->render(renderer, nullptr, &collider_destination, SDL_FLIP_NONE, _angle);
 	}
 }

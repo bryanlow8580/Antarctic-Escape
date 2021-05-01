@@ -56,11 +56,10 @@ SDL_Texture* Texture::data()
 	return _data;
 }
 
-void Texture::render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip) 
+void Texture::render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip, double angle) 
 {
 
 	int render_result, render_success = 0;
-	double angle	  = 0;
 	SDL_Point* center = nullptr;
 
 	render_result = SDL_RenderCopyEx(renderer, _data, clip, destination, angle, center, flip);

@@ -14,7 +14,7 @@ public:
 
 	SDL_Texture* data();
 
-	virtual void render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip);
+	virtual void render(SDL_Renderer* renderer, SDL_Rect* clip, SDL_Rect* destination, SDL_RendererFlip flip, double angle);
 
 private: 
 	SDL_Texture* _data;

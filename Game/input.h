@@ -14,9 +14,8 @@ public:
 		QUIT,
 
 		UP,
-		DOWN,
-		LEFT,
-		RIGHT,
+		TURN_LEFT,
+		TURN_RIGHT,
 
 		RUNNING,
 		SLIDING,

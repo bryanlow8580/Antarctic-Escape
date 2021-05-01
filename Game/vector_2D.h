@@ -19,6 +19,9 @@ public:
 	void scale(float scalar);
 	float angle();
 
+	float x_from_angle(float magnitude, double angle);
+	float y_from_angle(float magnitude, double angle);
+
 private:
 	float _x;
 	float _y;

@@ -1,4 +1,5 @@
 #include "game_scene.h"
+#include "ice.h"
 #include "dino.h"
 #include "walking_dino.h"
 #include "running_dog.h"
@@ -12,12 +13,14 @@
 Game_Scene::Game_Scene()
 	: Scene("Game") 
 {
+	add_game_object(new Ice("Ice", 50, 300, 500, 200));
+	add_game_object(new Ice("Ice2", 550, 500, 200, 500));
 	add_game_object(new Dino("Dino"));
 	add_game_object(new Walking_Dino("Dino.Walking"));
-	add_game_object(new Running_Dog("Dog.Running"));
+	//add_game_object(new Running_Dog("Dog.Running"));
 	add_game_object(new Player("Player"));
-	add_game_object(new Portal_Entry("Portal.Entry"));
-	add_game_object(new Portal_Exit("Portal.Exit"));
+	//add_game_object(new Portal_Entry("Portal.Entry"));
+	//add_game_object(new Portal_Exit("Portal.Exit"));
 }
 
 Game_Scene::~Game_Scene() 

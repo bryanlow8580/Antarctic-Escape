@@ -70,3 +70,13 @@ float Vector_2D::angle()
 {
 	return -atan2f(_y, _x);
 }
+
+float Vector_2D::x_from_angle(float magnitude, double angle)
+{
+	return (float)(magnitude * cos(angle));
+}
+
+float Vector_2D::y_from_angle(float magnitude, double angle)
+{
+	return (float)(magnitude * sin(angle));
+}

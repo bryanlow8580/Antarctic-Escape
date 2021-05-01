@@ -16,17 +16,10 @@ public:
 	void set_speed(float speed);
 	float speed();
 
-	enum class State 
-	{
-		Idle,
-		Walking, 
-		Running, 
-		Sliding,
-		Dying
-	};
-
 	void push_state(State state, Assets* assets);
 	void pop_state(Assets* assets);
+
+	Game_Object::State current_state();
 
 private:
 
@@ -34,6 +27,8 @@ private:
 
 	void handle_enter_state(State state, Assets* assets);
 	void handle_exit_state(State state, Assets* assets);
+
+	void slide();
 
 	float _speed;
 
