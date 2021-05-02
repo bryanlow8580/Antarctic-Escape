@@ -1,6 +1,6 @@
 #include "collider.h"
 
-Collider::Collider(float height, float width, Vector_2D translation)
+Collider::Collider(float width, float height, Vector_2D translation)
 	: _translation(translation.x(), translation.y())
 {
 	_height = height;
@@ -47,9 +47,13 @@ Vector_2D Collider::intersection_depth(Collider other)
 
 	const float x_distance_to_other_collider = other.translation().x() - _translation.x();
 	const float y_distance_to_other_collider = other.translation().y() - _translation.y();
+	
+	
+	// ??? _height of this collider returns negative, but other works fine ???
+	// the same collider as another returns height correctly for some reason ?
 
-	const float collider_height_combined = _height + other.height();
 	const float collider_width_combined = _width + other.width();
+	const float collider_height_combined = _height + other.height();
 
 	if (x_distance_to_other_collider < collider_width_combined)
 	{

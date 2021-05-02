@@ -71,11 +71,13 @@ float Vector_2D::angle()
 	return -atan2f(_y, _x);
 }
 
+// angle in radians
 float Vector_2D::x_from_angle(float magnitude, double angle)
 {
 	return (float)(magnitude * cos(angle));
 }
 
+// angle in radians
 float Vector_2D::y_from_angle(float magnitude, double angle)
 {
 	return (float)(magnitude * sin(angle));

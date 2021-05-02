@@ -11,6 +11,7 @@ public:
 	void set_radius(float radius);
 
 	float intersection_depth(Circle_2D other);
+	Vector_2D intersection_depth(Collider other);
 
 private:
 	float _radius;

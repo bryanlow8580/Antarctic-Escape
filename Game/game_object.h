@@ -23,7 +23,6 @@ public:
 	{
 		Idle,
 		Walking,
-		Running,
 		Sliding,
 		Dying
 	};

@@ -8,10 +8,10 @@ Player::Player(std::string id)
 {
 	
 	_translation	 = Vector_2D(50, 250);
-	_speed			 = 0.1f;
+	_speed			 = 0.2f;
 
 	_collider.set_radius(_width / 5.0f);
-	_collider.set_translation(Vector_2D(_width / 2.0f, (float)_height));
+	_collider.set_translation(Vector_2D(_width / 2.0f, _height / 2.0f));
 
 	_hp = 10;
 
@@ -25,6 +25,7 @@ Player::~Player()
 
 void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*) 
 {
+	_velocity = Vector_2D(0, 0);
 
 	if (_hp <= 0) 
 	{
@@ -34,35 +35,13 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 	switch (_state.top()) 
 	{
 		case State::Idle:
-			if (input->is_button_state(Input::Button::RUNNING, Input::Button_State::DOWN) && _velocity.magnitude() > 0.0f) 
-			{
-				push_state(State::Running, assets);
-			}
-			else if (_velocity.magnitude() > 0.0f) 
+			if (_velocity.magnitude() > 0.0f) 
 			{
 				push_state(State::Walking, assets);
 			}
 			break;
 		case State::Walking:
 			if (_velocity.magnitude() == 0.0f) 
-			{
-				pop_state(assets);
-			}
-			else if (input->is_button_state(Input::Button::RUNNING, Input::Button_State::PRESSED)) 
-			{
-				push_state(State::Running, assets);
-			}
-			else if (input->is_button_state(Input::Button::SLIDING, Input::Button_State::PRESSED)) 
-			{
-				push_state(State::Sliding, assets);
-			}
-			break;
-		case State::Running:
-			if (_velocity.magnitude() == 0.0f) 
-			{
-				pop_state(assets);
-			}
-			else if (input->is_button_state(Input::Button::RUNNING, Input::Button_State::RELEASED)) 
 			{
 				pop_state(assets);
 			}
@@ -73,10 +52,6 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 			{
 				pop_state(assets);
 			}
-			else if (input->is_button_state(Input::Button::SLIDING, Input::Button_State::RELEASED)) 
-			{
-				pop_state(assets);
-			}
 			break;
 		case State::Dying:
 			push_state(State::Dying, assets);
@@ -84,7 +59,6 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 
 	}
 
-	_velocity = Vector_2D(0, 0);
 
 	if (_angle < 0)
 	{
@@ -105,7 +79,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 		_angle -= 5;
 		//_velocity += Vector_2D(-1.0f, 0);
 	}
-	if (input->is_button_state(Input::Button::UP, Input::Button_State::DOWN)) 
+	if (input->is_button_state(Input::Button::UP, Input::Button_State::DOWN) && current_state() != State::Sliding) 
 	{
 		const float PI = 3.14159265f;
 		double radians = _angle * PI / 180;
@@ -178,16 +152,6 @@ void Player::handle_enter_state(State state, Assets* assets)
 
 			break;
 		}
-		case State::Running:
-		{
-			_texture_id = "Texture.Player.Running";
-			_speed = 0.3f;
-
-			const int running_channel = 1;
-			Sound* sound = (Sound*)assets->get_asset("Sound.Player.Running");
-			Mix_PlayChannel(running_channel, sound->data(), -1);
-			break;
-		}
 		case State::Sliding:
 		{
 			_texture_id = "Texture.Player.Sliding";
@@ -222,13 +186,6 @@ void Player::handle_exit_state(State state, Assets*)
 		{
 			const int walking_channel = 1;
 			Mix_HaltChannel(walking_channel);
-			break;
-		}
-		case State::Running:
-		{
-			const int running_channel = 1;
-			Mix_HaltChannel(running_channel);
-
 			break;
 		}
 		case State::Sliding:

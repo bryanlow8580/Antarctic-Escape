@@ -5,7 +5,7 @@
 class Collider
 {
 public:
-	Collider(float height, float width, Vector_2D translation);
+	Collider(float width, float height, Vector_2D translation);
 
 	float height();
 	float width();

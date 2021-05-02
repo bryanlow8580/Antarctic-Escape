@@ -104,28 +104,12 @@ void Input::get_input()
 							_button_state[Button::TURN_LEFT] = Button_State::PRESSED;
 						}
 						break;
-					/*case SDL_SCANCODE_S:
-						if (!is_button_state(Button::DOWN, Button_State::DOWN)) 
-						{
-							_button_state[Button::DOWN] = Button_State::PRESSED;
-						}
-						break;*/
 					case SDL_SCANCODE_D:
 						if (!is_button_state(Button::TURN_RIGHT, Button_State::DOWN)) 
 						{
 							_button_state[Button::TURN_RIGHT] = Button_State::PRESSED;
 						}
 						break;
-					case SDL_SCANCODE_LSHIFT:
-						if (!is_button_state(Button::RUNNING, Button_State::DOWN)) 
-						{
-							_button_state[Button::RUNNING] = Button_State::PRESSED;
-						}
-					case SDL_SCANCODE_LCTRL:
-						if (!is_button_state(Button::SLIDING, Button_State::DOWN)) 
-						{
-							_button_state[Button::SLIDING] = Button_State::PRESSED;
-						}
 					}
 					break;
 
@@ -138,17 +122,9 @@ void Input::get_input()
 					case SDL_SCANCODE_A:
 						_button_state[Button::TURN_LEFT] = Button_State::RELEASED;
 						break;
-					/*case SDL_SCANCODE_S:
-						_button_state[Button::DOWN] = Button_State::RELEASED;
-						break;*/
 					case SDL_SCANCODE_D:
 						_button_state[Button::TURN_RIGHT] = Button_State::RELEASED;
 						break;
-					case SDL_SCANCODE_LSHIFT:
-						_button_state[Button::RUNNING] = Button_State::RELEASED;
-						break;
-					case SDL_SCANCODE_LCTRL:
-						_button_state[Button::SLIDING] = Button_State::RELEASED;
 				}
 
 		}
