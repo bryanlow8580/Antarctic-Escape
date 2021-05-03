@@ -8,5 +8,7 @@ public:
 	Game_Scene();
 	~Game_Scene();
 
+	virtual void reset() override;
+
 	virtual void update(SDL_Window* window) override;
 };

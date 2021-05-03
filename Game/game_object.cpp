@@ -62,7 +62,6 @@ void Game_Object::set_hp(int hp)
 
 void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Scene* scene) 
 {
-
 	Vector_2D velocity = _velocity;
 	velocity.scale((float)milliseconds_to_simulate);
 
@@ -154,7 +153,7 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 
 		Text id(renderer, _id.c_str(), text_color, "ID.Text");
 	
-		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height));
+		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height) - scene->camera_translation());
 	}
 	if (config->should_display_position) 
 	{
@@ -169,10 +168,10 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 
 		Text id(renderer, position.c_str(), text_color, "ID.Text");
 
-		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height + 15));
+		id.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height + 15) - scene->camera_translation());
 
 		Text angle_text(renderer, angle.c_str(), text_color, "Angle.Text");
-		angle_text.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height - 15));
+		angle_text.render(renderer, _translation + Vector_2D((float)_width / 2, (float)_height - 15) - scene->camera_translation());
 	}
 
 	if (config->should_display_colliders && _collider.radius() > 0.f) 

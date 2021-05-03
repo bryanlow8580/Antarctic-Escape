@@ -114,6 +114,12 @@ Assets::Assets(SDL_Renderer* renderer)
 		_assets[texture->id()] = texture;
 	}
 
+	// Heart Texture
+	{
+		Texture* texture = new Texture("Texture.Life", "Assets/heart.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
 	///Sounds
 	// Background Music Asset
 	{

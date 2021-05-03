@@ -17,7 +17,6 @@ Scene::~Scene()
 
 Game_Object* Scene::get_game_object(std::string id) 
 {
-	
 	if (_game_objects.find(id) == _game_objects.end()) 
 	{
 		std::cout << "Attempted to find a game object that does not exist. ID: " << id << std::endl;
@@ -42,11 +41,23 @@ std::vector<Game_Object*> Scene::get_game_objects()
 
 void Scene::add_game_object(Game_Object* game_object) 
 {
+	if (_game_objects.find(game_object->id()) != _game_objects.end())
+	{
+		std::cout << "Object with the same id already exists. ID: " << game_object->id() << std::endl;
+		exit(1);
+	}
+
 	_game_objects[game_object->id()] = game_object;
 }
 
 void Scene::remove_game_object(std::string id) 
 {
+	//if (_game_objects.find(id) == _game_objects.end())
+	//{
+	//	std::cout << "Attempted to find a game object that does not exist. ID: " << id << std::endl;
+	//	exit(1);
+	//}
+
 	_game_objects.erase(id);
 }
 

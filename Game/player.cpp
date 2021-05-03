@@ -23,7 +23,7 @@ Player::~Player()
 
 }
 
-void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*) 
+void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*, Game_Manager*)
 {
 	_velocity = Vector_2D(0, 0);
 
@@ -54,6 +54,7 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 			}
 			break;
 		case State::Dying:
+
 			push_state(State::Dying, assets);
 			break;
 
@@ -71,12 +72,12 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 
 	if (input->is_button_state(Input::Button::TURN_RIGHT, Input::Button_State::DOWN)) 
 	{
-		_angle += 5;
+		_angle += _turning_angle;
 		//_velocity += Vector_2D(1.0f, 0);
 	}
 	if (input->is_button_state(Input::Button::TURN_LEFT, Input::Button_State::DOWN)) 
 	{
-		_angle -= 5;
+		_angle -= _turning_angle;
 		//_velocity += Vector_2D(-1.0f, 0);
 	}
 	if (input->is_button_state(Input::Button::UP, Input::Button_State::DOWN) && current_state() != State::Sliding) 

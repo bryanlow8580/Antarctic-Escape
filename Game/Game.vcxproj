@@ -155,10 +155,13 @@
     <ClCompile Include="dino.cpp" />
     <ClCompile Include="editor.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="game_over_scene.cpp" />
     <ClCompile Include="game_scene.cpp" />
     <ClCompile Include="ice.cpp" />
     <ClCompile Include="input.cpp" />
+    <ClCompile Include="life.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="portal_entry.cpp" />
@@ -166,6 +169,7 @@
     <ClCompile Include="rectangle_2D.cpp" />
     <ClCompile Include="running_dog.cpp" />
     <ClCompile Include="scene.cpp" />
+    <ClCompile Include="scene_manager.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -183,10 +187,13 @@
     <ClInclude Include="dino.h" />
     <ClInclude Include="editor.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="game_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="game_over_scene.h" />
     <ClInclude Include="game_scene.h" />
     <ClInclude Include="ice.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="life.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="portal_entry.h" />
     <ClInclude Include="portal_exit.h" />
@@ -194,6 +201,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="running_dog.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="scene_manager.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="texture.h" />

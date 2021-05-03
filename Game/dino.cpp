@@ -17,7 +17,7 @@ Dino::~Dino()
 
 }
 
-void Dino::simulate_AI(Uint32, Assets*, Input*, Scene*) 
+void Dino::simulate_AI(Uint32, Assets*, Input*, Scene*, Game_Manager*) 
 {
 
 }

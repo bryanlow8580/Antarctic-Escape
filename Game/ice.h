@@ -8,7 +8,7 @@ public:
 	Ice(std::string id, Vector_2D translation, int width, int height);
 	~Ice();
 
-	void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene) override;
+	void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene, Game_Manager* game_manager) override;
 
 private:
 	static bool player_on_ice;

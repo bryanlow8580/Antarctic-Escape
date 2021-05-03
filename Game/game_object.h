@@ -11,13 +11,13 @@
 #include "circle_2D.h"
 #include "scene.h"
 #include "configuration.h"
+#include "game_manager.h"
 
 class Game_Object 
 {
 public:
 	Game_Object(std::string id, std::string texture_id);
 	~Game_Object();
-
 
 	enum class State
 	{
@@ -32,12 +32,13 @@ public:
 	void set_translation(Vector_2D translation);
 	int width();
 	int height();
+
 	void set_hp(int hp);
 
 	Vector_2D velocity();
 
 	// = 0 at the end of declaration informs compiler that the method is abstract (aka pure virtual)
-	virtual void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene) = 0;
+	virtual void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene, Game_Manager* game_manager) = 0;
 	virtual void simulate_physics(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scene);
 	virtual void render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Renderer* renderer, Configuration* config, Scene* scene);
 

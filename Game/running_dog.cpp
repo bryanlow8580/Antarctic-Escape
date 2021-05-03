@@ -20,7 +20,7 @@ Running_Dog::~Running_Dog()
 #pragma warning ( push )
 #pragma warning ( disable : 4244 )
 
-void Running_Dog::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene) 
+void Running_Dog::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene, Game_Manager* game_manager)
 {
 
 	Game_Object* player = scene->get_game_object("Player");
@@ -35,9 +35,9 @@ void Running_Dog::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 	// If in range
 	if (distance_to_player < 50.0f) 
 	{
-
 		player->set_hp(0);
-
+		game_manager->player_lose_life();
+		scene->reset();
 	}
 
 	_total_time_milliseconds += milliseconds_to_simulate;

@@ -10,7 +10,7 @@ public:
 	Player(std::string id);
 	~Player();
 
-	virtual void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene) override;
+	virtual void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene, Game_Manager* game_manager) override;
 	virtual void render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Renderer* renderer, Configuration* config, Scene* scene) override;
 
 	void set_speed(float speed);
@@ -31,6 +31,8 @@ private:
 	void slide();
 
 	float _speed;
+
+	const float _turning_angle = 3.5;
 
 	std::stack<State> _state;
 };

@@ -18,7 +18,7 @@ Ice::~Ice()
 
 }
 
-void Ice::simulate_AI(Uint32, Assets* assets, Input*, Scene* scene)
+void Ice::simulate_AI(Uint32, Assets* assets, Input*, Scene* scene, Game_Manager*)
 {
 	Player* player = (Player*)scene->get_game_object("Player");
 	float player_x = player->translation().x();

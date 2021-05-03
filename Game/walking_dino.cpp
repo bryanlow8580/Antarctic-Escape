@@ -22,7 +22,7 @@ Walking_Dino::~Walking_Dino()
 
 }
 
-void Walking_Dino::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene) 
+void Walking_Dino::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene, Game_Manager*)
 {
 	if (_translation.x() > 200.f && !_has_spawned_another)
 	{

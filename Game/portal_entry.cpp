@@ -17,7 +17,7 @@ Portal_Entry::~Portal_Entry()
 #pragma warning ( push )
 #pragma warning ( disable : 4244 )
 
-void Portal_Entry::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene) 
+void Portal_Entry::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene, Game_Manager*)
 {
 
 	// Get player object

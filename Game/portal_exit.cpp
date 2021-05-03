@@ -14,7 +14,7 @@ Portal_Exit::~Portal_Exit()
 {
 }
 
-void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene*) 
+void Portal_Exit::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene*, Game_Manager*)
 {
 	_total_time_milliseconds += milliseconds_to_simulate;
 }

@@ -17,6 +17,7 @@ public:
 	Scene(std::string id);
 	~Scene();
 
+	virtual void reset() = 0;
 	virtual void update(SDL_Window* window) = 0;
 
 	Game_Object* get_game_object(std::string id);
