@@ -55,11 +55,7 @@ int main(void)
 			std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep_for));
 		}
 
-		frame_end_time_ms = SDL_GetTicks();
-
-		std::cout << previous_frame_duration << std::endl;
-
-		
+		frame_end_time_ms = SDL_GetTicks();		
 	}
 
 	return 0;

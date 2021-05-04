@@ -32,6 +32,7 @@ public:
 	void set_translation(Vector_2D translation);
 	int width();
 	int height();
+	bool blocked_by_wall();
 
 	void set_hp(int hp);
 
@@ -44,6 +45,7 @@ public:
 
 	Circle_2D collider();
 
+
 protected:
 	std::string _id;
 	std::string _texture_id;
@@ -54,11 +56,12 @@ protected:
 	Vector_2D _velocity;	// Direction & speed
 
 	double _angle;
-	
 	int _width;
 	int _height;
 
 	int _hp;
+
+	bool _blocked_by_wall;
 
 	SDL_RendererFlip _flip;
 };

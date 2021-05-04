@@ -15,4 +15,5 @@ public:
 
 private:
 	float _radius;
+	Collider _collider;
 };

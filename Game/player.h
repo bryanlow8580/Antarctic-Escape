@@ -7,7 +7,8 @@
 class Player : public Game_Object 
 {
 public:
-	Player(std::string id);
+	Player();
+	Player(std::string id, Vector_2D translation);
 	~Player();
 
 	virtual void simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene* scene, Game_Manager* game_manager) override;

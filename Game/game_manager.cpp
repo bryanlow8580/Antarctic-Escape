@@ -10,6 +10,7 @@ Game_Manager::Game_Manager()
 	_initialized_on_scene  = "";
 
 	_has_not_initialised_UI = true;
+	_player_victory = false;
 }
 
 void Game_Manager::update(Scene_Manager* scene_manager)
@@ -43,6 +44,15 @@ void Game_Manager::update(Scene_Manager* scene_manager)
 	{
 		scene_manager->set_current_scene("Game_Over");
 	}
+	if (_player_victory)
+	{
+		scene_manager->set_current_scene("Victory");
+	}
+}
+
+void Game_Manager::player_victory()
+{
+	_player_victory = true;
 }
 
 void Game_Manager::player_lose_life()

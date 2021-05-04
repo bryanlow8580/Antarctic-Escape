@@ -154,7 +154,9 @@
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="dino.cpp" />
     <ClCompile Include="editor.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="flag.cpp" />
     <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="game_object.cpp" />
     <ClCompile Include="game_over_scene.cpp" />
@@ -186,7 +188,9 @@
     <ClInclude Include="configuration.h" />
     <ClInclude Include="dino.h" />
     <ClInclude Include="editor.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="flag.h" />
     <ClInclude Include="game_manager.h" />
     <ClInclude Include="game_object.h" />
     <ClInclude Include="game_over_scene.h" />

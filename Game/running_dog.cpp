@@ -7,7 +7,7 @@ Running_Dog::Running_Dog(std::string id)
 	: Game_Object(id, "Texture.Dog.Running") 
 {
 	
-	_translation = Vector_2D(50, 150);
+	_translation = Vector_2D(240, 250);
 }
 
 Running_Dog::~Running_Dog() 
@@ -15,19 +15,14 @@ Running_Dog::~Running_Dog()
 
 }
 
-
-// Disables int to float conversion warning
-#pragma warning ( push )
-#pragma warning ( disable : 4244 )
-
 void Running_Dog::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, Scene* scene, Game_Manager* game_manager)
 {
 
 	Game_Object* player = scene->get_game_object("Player");
 
 	// Get location of center for portal and player
-	Vector_2D dog_center = _translation + Vector_2D(_width / 2, _height / 2);
-	Vector_2D player_center = player->translation() + Vector_2D(player->width() / 2, player->height() / 2);
+	Vector_2D dog_center = _translation + Vector_2D(_width / 2.0f, _height / 2.0f);
+	Vector_2D player_center = player->translation() + Vector_2D(player->width() / 2.0f, player->height() / 2.0f);
 
 	// Find distance to player 
 	float distance_to_player = (dog_center - player_center).magnitude();
@@ -43,9 +38,6 @@ void Running_Dog::simulate_AI(Uint32 milliseconds_to_simulate, Assets*, Input*, 
 	_total_time_milliseconds += milliseconds_to_simulate;
 
 }
-
-
-#pragma warning ( pop )
 
 void Running_Dog::render(Uint32 milliseconds_to_simulate, Assets* assets, SDL_Renderer* renderer, Configuration* config, Scene* scene) 
 {

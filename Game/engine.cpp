@@ -11,6 +11,7 @@
 #include <iostream>
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
+#include <algorithm>
 
 Engine::Engine(std::string window_name, Configuration* config) 
 {
@@ -145,13 +146,31 @@ void Engine::render(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scen
 	}
 
 	// Background colour
-	const Uint8 red   = 255;
-	const Uint8 green = 0;
-	const Uint8 blue  = 255;
+	const Uint8 red   = 200;
+	const Uint8 green = 200;
+	const Uint8 blue  = 200;
 	const Uint8 alpha = 255;
 
-	std::vector<Game_Object*> game_objects = scene->get_game_objects();
-	for (Game_Object* game_object : game_objects) 
+	std::vector<Game_Object*> sorted_game_objects = scene->get_game_objects();
+
+	const struct
+	{
+		bool operator()(Game_Object* a, Game_Object* b)
+		{
+			if (a->id().find("Ice") != -1 && b->id().find("Ice") == -1)
+			{
+				return true;
+			}
+			else if (a->id().find("Ice") == -1 && b->id().find("Ice") != -1)
+			{
+				return false;
+			}
+			return a->translation().y() < b->translation().y();
+		}
+	} sort_by_y_order;
+	std::sort(sorted_game_objects.begin(), sorted_game_objects.end(), sort_by_y_order);
+
+	for (Game_Object* game_object : sorted_game_objects) 
 	{
 		game_object->render(milliseconds_to_simulate, assets, _renderer, config, scene);
 	}

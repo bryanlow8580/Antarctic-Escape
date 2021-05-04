@@ -3,17 +3,38 @@
 #include "player.h"
 #include "sound.h"
 
-Player::Player(std::string id)
-	: Game_Object(id, "Texture.Player.Walking") 
+Player::Player()
+	: Game_Object("Player", "Texture.Player.Idle")
 {
-	
-	_translation	 = Vector_2D(50, 250);
-	_speed			 = 0.2f;
+	_width  = 100;
+	_height = 100;
+
+	_translation = Vector_2D(50, 250);
+	_speed		 = 0.2f;
+	_hp			 = 10;
 
 	_collider.set_radius(_width / 5.0f);
 	_collider.set_translation(Vector_2D(_width / 2.0f, _height / 2.0f));
 
-	_hp = 10;
+	_blocked_by_wall = true;
+
+	_state.push(State::Idle);
+}
+
+Player::Player(std::string id, Vector_2D translation)
+	: Game_Object(id, "Texture.Player.Idle") 
+{
+	_width = 100;
+	_height = 100;
+	
+	_translation	 = translation;
+	_speed			 = 0.2f;
+	_hp				 = 10;
+
+	_collider.set_radius(_width / 5.0f);
+	_collider.set_translation(Vector_2D(_width / 2.0f, _height / 2.0f));
+
+	_blocked_by_wall = true;
 
 	_state.push(State::Idle);	
 }
@@ -25,7 +46,6 @@ Player::~Player()
 
 void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*, Game_Manager*)
 {
-	_velocity = Vector_2D(0, 0);
 
 	if (_hp <= 0) 
 	{
@@ -39,23 +59,22 @@ void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input*
 			{
 				push_state(State::Walking, assets);
 			}
+			_velocity = Vector_2D(0, 0);
 			break;
 		case State::Walking:
 			if (_velocity.magnitude() == 0.0f) 
 			{
 				pop_state(assets);
 			}
+			_velocity = Vector_2D(0, 0);
 			break;
 		case State::Sliding:
 			slide();
-			if (_velocity.magnitude() == 0.0f) 
-			{
-				pop_state(assets);
-			}
 			break;
 		case State::Dying:
 
 			push_state(State::Dying, assets);
+			_velocity = Vector_2D(0, 0);
 			break;
 
 	}
@@ -123,7 +142,11 @@ void Player::push_state(State state, Assets* assets)
 
 void Player::pop_state(Assets* assets) 
 {
-
+	// Prevents popping of state if there is no other state
+	if (_state.size() <= 1)
+	{
+		return;
+	}
 	handle_exit_state(_state.top(), assets);
 	_state.pop();
 	handle_enter_state(_state.top(), assets);
@@ -145,7 +168,7 @@ void Player::handle_enter_state(State state, Assets* assets)
 		case State::Walking:
 		{
 			_texture_id = "Texture.Player.Walking";
-			_speed = 0.15f;
+			_speed = 0.27f;
 
 			const int walking_channel = 1;
 			Sound* sound = (Sound*)assets->get_asset("Sound.Player.Walking");
@@ -156,7 +179,7 @@ void Player::handle_enter_state(State state, Assets* assets)
 		case State::Sliding:
 		{
 			_texture_id = "Texture.Player.Sliding";
-			_speed = 0.22f;
+			_speed = 0.4f;
 
 			const int sliding_channel = 1;
 			Sound* sound = (Sound*)assets->get_asset("Sound.Player.Sliding");
@@ -208,6 +231,7 @@ void Player::handle_exit_state(State state, Assets*)
 
 void Player::slide()
 {
+	_speed = 0.4f;
 	const float PI = 3.14159265f;
 	double radians = _angle * PI / 180;
 	_velocity = Vector_2D(_velocity.x_from_angle(_speed, radians), _velocity.y_from_angle(_speed, radians));

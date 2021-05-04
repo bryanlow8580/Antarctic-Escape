@@ -102,6 +102,12 @@
     <ClCompile Include="life.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="flag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animated_texture.h">
@@ -192,6 +198,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="life.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

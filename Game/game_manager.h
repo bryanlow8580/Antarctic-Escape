@@ -8,7 +8,8 @@ public:
 	Game_Manager();
 
 	void update(Scene_Manager* scene_manager);
-	
+
+	void player_victory();
 	void player_lose_life();
 
 private:
@@ -18,6 +19,8 @@ private:
 	int _player_lives;
 	int _previous_update_lives;
 	bool _has_not_initialised_UI;
+
+	bool _player_victory;
 
 	std::string _initialized_on_scene = "";
 };

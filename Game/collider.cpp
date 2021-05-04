@@ -1,10 +1,21 @@
 #include "collider.h"
 
+#include <cmath>
+
+Collider::Collider()
+	: _translation(0, 0)
+{
+	_weight = 1.0f;
+	_height = 50;
+	_width = 50;
+}
+
 Collider::Collider(float width, float height, Vector_2D translation)
 	: _translation(translation.x(), translation.y())
 {
-	_height = height;
-	_width = width;
+	_weight		 = 1.0f;
+	_height		 = height;
+	_width		 = width;
 	_translation = translation;
 }
 
@@ -18,6 +29,11 @@ float Collider::width()
 	return _width;
 }
 
+float Collider::weight()
+{
+	return _weight;
+}
+
 void Collider::set_height(float height) 
 {
 	_height = height;
@@ -26,6 +42,11 @@ void Collider::set_height(float height)
 void Collider::set_width(float width)
 {
 	_width = width;
+}
+
+void Collider::set_weight(float weight)
+{
+	_weight = weight;
 }
 
 Vector_2D Collider::translation()
@@ -45,12 +66,8 @@ Vector_2D Collider::intersection_depth(Collider other)
 		return Vector_2D(0, 0);
 	}
 
-	const float x_distance_to_other_collider = other.translation().x() - _translation.x();
-	const float y_distance_to_other_collider = other.translation().y() - _translation.y();
-	
-	
-	// ??? _height of this collider returns negative, but other works fine ???
-	// the same collider as another returns height correctly for some reason ?
+	const float x_distance_to_other_collider = std::abs(other.translation().x() - _translation.x());
+	const float y_distance_to_other_collider = std::abs(other.translation().y() - _translation.y());
 
 	const float collider_width_combined = _width + other.width();
 	const float collider_height_combined = _height + other.height();

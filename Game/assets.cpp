@@ -35,37 +35,37 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	// Cache Player Walking Texture
 	{
-		const int frame_count					 = 10;
-		const Uint32 frame_duration_milliseconds = 100;
+		const int frame_count					 = 3;
+		const Uint32 frame_duration_milliseconds = 200;
 
-		Animated_Texture* texture = new Animated_Texture("Texture.Player.Walking", "Assets/dog.walking.png", renderer, frame_count, frame_duration_milliseconds);
+		Animated_Texture* texture = new Animated_Texture("Texture.Player.Walking", "Assets/penguin.walk.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 	
 	// Create player running texture.
 	{
-		const int frame_count					 = 8;
+		const int frame_count					 = 3;
 		const Uint32 frame_duration_milliseconds = 100;
 
-		Asset* texture = new Animated_Texture("Texture.Player.Running", "Assets/dog.running.png", renderer, frame_count, frame_duration_milliseconds);
+		Asset* texture = new Animated_Texture("Texture.Player.Running", "Assets/penguin.walk.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 
 	// Create player idle texture.
 	{
-		const int frame_count					 = 10;
+		const int frame_count					 = 3;
 		const Uint32 frame_duration_milliseconds = 50;
 
-		Asset* texture = new Animated_Texture("Texture.Player.Idle", "Assets/dog.idle.png", renderer, frame_count, frame_duration_milliseconds);
+		Asset* texture = new Animated_Texture("Texture.Player.Idle", "Assets/penguin.idle.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 
 	// Create player sliding texture.
 	{
-		const int frame_count					 = 10;
-		const Uint32 frame_duration_milliseconds = 100;
+		const int frame_count					 = 3;
+		const Uint32 frame_duration_milliseconds = 200;
 
-		Asset* texture = new Animated_Texture("Texture.Player.Sliding", "Assets/dog.sliding.png", renderer, frame_count, frame_duration_milliseconds);
+		Asset* texture = new Animated_Texture("Texture.Player.Sliding", "Assets/penguin.slide.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 
@@ -95,6 +95,12 @@ Assets::Assets(SDL_Renderer* renderer)
 		Texture* texture = new Texture("Texture.Ice", "Assets/ice.png", renderer);
 		_assets[texture->id()] = texture;
 	}
+	
+	// Wall Texture
+	{
+		Texture* texture = new Texture("Texture.Wall", "Assets/wall.png", renderer);
+		_assets[texture->id()] = texture;
+	}
 
 	// Portal Entry Texture 
 	{
@@ -119,6 +125,26 @@ Assets::Assets(SDL_Renderer* renderer)
 		Texture* texture = new Texture("Texture.Life", "Assets/heart.png", renderer);
 		_assets[texture->id()] = texture;
 	}
+	
+	// Flag Texture
+	{
+		Texture* texture = new Texture("Texture.Flag", "Assets/flag.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
+	// Game Over Texture
+	{
+		Texture* texture = new Texture("Texture.Game.Over", "Assets/game.over.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
+	// Space to Continue Texture
+	{
+		Texture* texture = new Texture("Texture.Continue", "Assets/continue.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
+
 
 	///Sounds
 	// Background Music Asset
