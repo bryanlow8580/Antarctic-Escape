@@ -3,6 +3,7 @@
 #include <thread>
 
 #include "engine.h"
+#include "title_scene.h"
 #include "game_scene.h"
 #include "game_over_scene.h"
 #include "game_victory_scene.h"
@@ -21,10 +22,11 @@ int main(void)
 	Scene_Manager* scene_manager = new Scene_Manager();
 	Game_Manager* game_manager   = new Game_Manager();
 
+	scene_manager->add_scene(new Title_Scene());
 	scene_manager->add_scene(new Game_Scene());
 	scene_manager->add_scene(new Game_Over_Scene());
 	scene_manager->add_scene(new Game_Victory_Scene());
-	scene_manager->set_current_scene("Game");
+	scene_manager->set_current_scene("Game.Title");
 
 	const Uint32 milliseconds_per_seconds = 1000;
 	const Uint32 frames_per_second		  = 60;

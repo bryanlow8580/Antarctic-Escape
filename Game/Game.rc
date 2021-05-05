@@ -67,11 +67,6 @@ BEGIN
         MENUITEM "Exit",                        ID_FILE_EXIT
         MENUITEM "Pause/Unpause",               ID_FILE_PAUSE
     END
-    POPUP "Player"
-    BEGIN
-        MENUITEM "Increase Speed",              ID_PLAYER_INCREASESPEED
-        MENUITEM "Decrease Speed",              ID_PLAYER_DECREASESPEED
-    END
     POPUP "Credits"
     BEGIN
         MENUITEM "Developers",                  ID_CREDITS_DEVELOPERS

@@ -20,8 +20,6 @@ void Input::get_input()
 {
 
 	_button_state[Button::PAUSE]					= Button_State::UP;
-	_button_state[Button::INCREASE_SPEED]			= Button_State::UP;
-	_button_state[Button::DECREASE_SPEED]			= Button_State::UP;
 	_button_state[Button::SHOW_CREDITS]				= Button_State::UP;
 	_button_state[Button::DEBUG_SHOW_IDS]			= Button_State::UP;
 	_button_state[Button::DEBUG_SHOW_POSITION]	    = Button_State::UP;
@@ -57,14 +55,6 @@ void Input::get_input()
 				else if (event.syswm.msg->msg.win.wParam == ID_FILE_PAUSE) 
 				{
 					_button_state[Button::PAUSE] = Button_State::PRESSED;
-				}
-				else if (event.syswm.msg->msg.win.wParam == ID_PLAYER_INCREASESPEED) 
-				{
-					_button_state[Button::INCREASE_SPEED] = Button_State::PRESSED;
-				}
-				else if (event.syswm.msg->msg.win.wParam == ID_PLAYER_DECREASESPEED) 
-				{
-					_button_state[Button::DECREASE_SPEED] = Button_State::PRESSED;
 				}
 				else if (event.syswm.msg->msg.win.wParam == ID_CREDITS_DEVELOPERS) 
 				{
@@ -110,6 +100,12 @@ void Input::get_input()
 							_button_state[Button::TURN_RIGHT] = Button_State::PRESSED;
 						}
 						break;
+					case SDL_SCANCODE_SPACE:
+						if (!is_button_state(Button::START, Button_State::DOWN))
+						{
+							_button_state[Button::START] = Button_State::PRESSED;
+						}
+						break;
 					}
 					break;
 
@@ -125,6 +121,8 @@ void Input::get_input()
 					case SDL_SCANCODE_D:
 						_button_state[Button::TURN_RIGHT] = Button_State::RELEASED;
 						break;
+					case SDL_SCANCODE_SPACE:
+						_button_state[Button::START] = Button_State::RELEASED;
 				}
 
 		}

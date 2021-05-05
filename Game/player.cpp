@@ -41,7 +41,7 @@ Player::Player(std::string id, Vector_2D translation)
 
 Player::~Player() 
 {
-
+	Mix_HaltChannel(1);
 }
 
 void Player::simulate_AI(Uint32 milliseconds_to_simulate, Assets* assets, Input* input, Scene*, Game_Manager*)

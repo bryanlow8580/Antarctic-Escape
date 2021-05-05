@@ -73,22 +73,12 @@ INT_PTR CALLBACK Dialog_Proc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM)
 	}
 }
 
-void Editor::update(Input* input, Scene* scene, Configuration* config) 
+void Editor::update(Input* input, Scene*, Configuration* config) 
 {
 
 	if (input->is_button_state(Input::Button::PAUSE, Input::Button_State::PRESSED)) 
 	{
 		config->pause = !config->pause;
-	}
-	if (input->is_button_state(Input::Button::DECREASE_SPEED, Input::Button_State::PRESSED)) 
-	{
-		Player* player = (Player*)scene->get_game_object("Player");
-		player->set_speed(player->speed() * 0.9f);
-	}
-	if (input->is_button_state(Input::Button::INCREASE_SPEED, Input::Button_State::PRESSED)) 
-	{
-		Player* player = (Player*)scene->get_game_object("Player");
-		player->set_speed(player->speed() * 1.1f);
 	}
 	if (input->is_button_state(Input::Button::SHOW_CREDITS, Input::Button_State::PRESSED)) 
 	{

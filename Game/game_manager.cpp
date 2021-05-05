@@ -4,13 +4,8 @@
 
 Game_Manager::Game_Manager()
 {
-	_player_lives		   = 3;
-	_previous_update_lives = _player_lives;
-	
-	_initialized_on_scene  = "";
-
-	_has_not_initialised_UI = true;
-	_player_victory = false;
+	reset();
+	_start_game = false;
 }
 
 void Game_Manager::update(Scene_Manager* scene_manager)
@@ -40,6 +35,11 @@ void Game_Manager::update(Scene_Manager* scene_manager)
 	}
 	_previous_update_lives = _player_lives;
 
+	if (_start_game)
+	{
+		scene_manager->set_current_scene("Game");
+		_start_game = false;
+	}
 	if (_player_lives <= 0)
 	{
 		scene_manager->set_current_scene("Game_Over");
@@ -48,6 +48,7 @@ void Game_Manager::update(Scene_Manager* scene_manager)
 	{
 		scene_manager->set_current_scene("Game_Victory");
 	}
+
 }
 
 void Game_Manager::player_victory()
@@ -58,6 +59,24 @@ void Game_Manager::player_victory()
 void Game_Manager::player_lose_life()
 {
 	_player_lives --;
+}
+
+void Game_Manager::start_game()
+{
+	reset();
+	_start_game = true;
+	_has_not_initialised_UI = false;
+}
+
+void Game_Manager::reset()
+{
+	_player_lives = 3;
+	_previous_update_lives = _player_lives;
+
+	_initialized_on_scene = "";
+
+	_has_not_initialised_UI = true;
+	_player_victory = false;
 }
 
 void Game_Manager::spawn_life(Scene_Manager* scene_manager, int current_lives)

@@ -91,6 +91,18 @@ Assets::Assets(SDL_Renderer* renderer)
 		_assets[texture->id()] = texture;
 	}
 
+	// Game Title Texture
+	{
+		Texture* texture = new Texture("Texture.Game.Title", "Assets/game.title.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
+	// Continue Texture 
+	{
+		Texture* texture = new Texture("Texture.Game.Continue", "Assets/game.continue.png", renderer);
+		_assets[texture->id()] = texture;
+	}
+
 	// Game Over Texture
 	{
 		Texture* texture = new Texture("Texture.Game.Over", "Assets/game.over.png", renderer);
