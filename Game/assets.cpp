@@ -7,32 +7,6 @@
 
 Assets::Assets(SDL_Renderer* renderer)
 {
-
-	// Cache Dino Texture
-	{
-		Texture* texture	   = new Texture("Texture.Dino", "Assets/dino.png", renderer);
-		_assets[texture->id()] = texture;
-	}
-
-	// Cache Dino Walking Texture
-	{
-		const int frame_count					 = 10;
-		const Uint32 frame_duration_milliseconds = 100;
-
-		Animated_Texture* texture = new Animated_Texture("Texture.Dino.Walking", "Assets/dino.walking.png", renderer, frame_count, frame_duration_milliseconds);
-
-		_assets[texture->id()] = texture;
-	}
-
-	// Cache Running Dog Texture
-	{
-		const int frame_count					 = 8;
-		const Uint32 frame_duration_milliseconds = 100;
-
-		Animated_Texture* texture = new Animated_Texture("Texture.Dog.Running", "Assets/dog.running.png", renderer, frame_count, frame_duration_milliseconds);
-		_assets[texture->id()] = texture;
-	}
-
 	// Cache Player Walking Texture
 	{
 		const int frame_count					 = 3;
@@ -54,7 +28,7 @@ Assets::Assets(SDL_Renderer* renderer)
 	// Create player idle texture.
 	{
 		const int frame_count					 = 3;
-		const Uint32 frame_duration_milliseconds = 50;
+		const Uint32 frame_duration_milliseconds = 200;
 
 		Asset* texture = new Animated_Texture("Texture.Player.Idle", "Assets/penguin.idle.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
@@ -71,22 +45,25 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	// Create player dying texture.
 	{
-		const int frame_count					 = 10;
-		const Uint32 frame_duration_milliseconds = 100;
+		const int frame_count					 = 3;
+		const Uint32 frame_duration_milliseconds = 200;
 
-		Asset* texture = new Animated_Texture("Texture.Player.Dying", "Assets/dog.dying.png", renderer, frame_count, frame_duration_milliseconds);
+		Asset* texture = new Animated_Texture("Texture.Player.Dying", "Assets/penguin.die.png", renderer, frame_count, frame_duration_milliseconds);
+		_assets[texture->id()] = texture;
+	}
+
+	// Enemy walking texture
+	{
+		const int frame_count					 = 3;
+		const Uint32 frame_duration_milliseconds = 200;
+
+		Asset* texture = new Animated_Texture("Texture.Enemy.Walking", "Assets/enemy.walking.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 
 	// Collider Texture 
 	{
 		Texture* texture = new Texture("Texture.Collider", "Assets/collider.png", renderer);
-		_assets[texture->id()] = texture;
-	}
-
-	// Rectangle Collider Texture 
-	{
-		Texture* texture = new Texture("Texture.Collider.Rectangle", "Assets/collider.rect.png", renderer);
 		_assets[texture->id()] = texture;
 	}
 
@@ -99,24 +76,6 @@ Assets::Assets(SDL_Renderer* renderer)
 	// Wall Texture
 	{
 		Texture* texture = new Texture("Texture.Wall", "Assets/wall.png", renderer);
-		_assets[texture->id()] = texture;
-	}
-
-	// Portal Entry Texture 
-	{
-		const int frame_count					 = 8;
-		const Uint32 frame_duration_milliseconds = 100;
-
-		Animated_Texture* texture = new Animated_Texture("Texture.Portal.Entry", "Assets/portal.green.png", renderer, frame_count, frame_duration_milliseconds);
-		_assets[texture->id()] = texture;
-	}
-
-	// Portal Exit Texture
-	{
-		const int frame_count					 = 8;
-		const Uint32 frame_duration_milliseconds = 100;
-
-		Animated_Texture* texture = new Animated_Texture("Texture.Portal.Exit", "Assets/portal.purple.png", renderer, frame_count, frame_duration_milliseconds);
 		_assets[texture->id()] = texture;
 	}
 
@@ -138,12 +97,11 @@ Assets::Assets(SDL_Renderer* renderer)
 		_assets[texture->id()] = texture;
 	}
 
-	// Space to Continue Texture
+	// Game Victory Texture
 	{
-		Texture* texture = new Texture("Texture.Continue", "Assets/continue.png", renderer);
+		Texture* texture = new Texture("Texture.Game.Victory", "Assets/game.victory.png", renderer);
 		_assets[texture->id()] = texture;
 	}
-
 
 
 	///Sounds
@@ -169,7 +127,7 @@ Assets::Assets(SDL_Renderer* renderer)
 
 	// Player Sliding Sound
 	{
-		Sound* sound		 = new Sound("Sound.Player.Sliding", "Assets/jump.ogg");
+		Sound* sound		 = new Sound("Sound.Player.Sliding", "Assets/sliding.ogg");
 		_assets[sound->id()] = sound;
 	}
 

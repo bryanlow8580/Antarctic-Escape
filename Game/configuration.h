@@ -7,6 +7,6 @@ struct Configuration
 	bool should_display_colliders = false;
 	bool pause = false;
 
-	int window_width  = 800;
+	int window_width  = 1366;
 	int window_height = 800;
 };

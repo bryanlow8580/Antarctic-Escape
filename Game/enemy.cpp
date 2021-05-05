@@ -6,16 +6,19 @@
 #include <time.h>
 
 Enemy::Enemy(std::string id, Vector_2D translation)
-	: Game_Object(id, "Texture.Dog.Running")
+	: Game_Object(id, "Texture.Enemy.Walking")
 {
-	_width = 100;
-	_height = 100;
+	_width = 130;
+	_height = 130;
 
 	_speed = 0.25f;
 	_translation = translation;
 
 	moved();
 	turned();
+
+	srand((Uint32)time(NULL) + rand() % 10000);
+	_angle = rand() % 360;
 	
 	_blocked_by_wall = true;
 }
@@ -27,20 +30,17 @@ Enemy::~Enemy()
 
 void Enemy::moved()
 {
-	srand((Uint32)time(NULL));
+	srand((Uint32)time(NULL) + rand() % 10000);
 	_milliseconds_until_move = (rand() % 5 + 5) * 850;
 
-
-	srand((Uint32)time(NULL));
-	_milliseconds_of_movement = (rand() % 10 + 5) * 100;
+	_milliseconds_of_movement = (rand() % 5 + 5) * 100;
 }
 
 void Enemy::turned()
 {
-	srand((Uint32)time(NULL));
+	srand((Uint32)time(NULL) + rand() % 10000);
 	_milliseconds_until_turn = (rand() % 5 + 5) * 700;
 
-	srand((Uint32)time(NULL));
 	_milliseconds_of_turn = (rand() % 10 + 5) * 100;
 
 	_turn_direction = rand() % 2;

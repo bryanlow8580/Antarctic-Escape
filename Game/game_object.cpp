@@ -82,83 +82,24 @@ void Game_Object::simulate_physics(Uint32 milliseconds_to_simulate, Assets*, Sce
 			continue;
 		}
 
-		Collider collider	    = Collider(_collider.width(), _collider.height(), _collider.translation() + _translation);
+		Circle_2D collider		 = Circle_2D(_collider.radius(), _collider.translation() + _translation);
+		Circle_2D other_collider = Circle_2D(game_object->_collider.radius(), game_object->_collider.translation() + game_object->_translation);
+		float intersection_depth = collider.intersection_depth(other_collider);
 
-		Collider other_collider = Collider(game_object->_collider.width(), game_object->_collider.height(), game_object->_collider.translation() + game_object->_translation);
-
-		Vector_2D intersection_depth	  = collider.intersection_depth(other_collider);
-		float intersection_depth_magnitude = intersection_depth.magnitude();
-
-		if (intersection_depth_magnitude > 0.0f)
+		if (intersection_depth > 0.0f) 
 		{
 
-			other_collider.set_weight(game_object->_collider.weight());
-			collider.set_weight(_collider.weight());
-			const float weight_ratio = collider.weight() / (collider.weight() + other_collider.weight());
-
+			// pushes objects away from each other if intersecting / colliding
 			Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
-
-			if (collider.weight() >= 990)
-			{
-				other_collider_to_collider.scale(0);
-			}
-			else if (weight_ratio <= 0.05)
-			{
-				// scaled by 1
-				other_collider_to_collider.scale(1 / intersection_depth_magnitude);
-			}
-			else
-			{
-				other_collider_to_collider.scale(weight_ratio);
-				other_collider_to_collider.normalize();
-				other_collider_to_collider.scale(1 / intersection_depth_magnitude);
-			}
-
-			//other_collider_to_collider = Vector_2D(other_collider_to_collider.x() / intersection_depth_magnitude, other_collider_to_collider.y() / intersection_depth_magnitude);
-			//other_collider_to_collider.scale(intersection_depth_magnitude);
-
+			other_collider_to_collider.normalize();
+			other_collider_to_collider.scale(intersection_depth);
 			_translation += other_collider_to_collider;
-
+		
 			Vector_2D collider_to_other_collider = other_collider.translation() - collider.translation();
-
-			if (weight_ratio <= 0.05) 
-			{ 
-				collider_to_other_collider.scale(0);
-			} 
-			else
-			{
-				collider_to_other_collider.scale(1 / weight_ratio);
-				collider_to_other_collider.normalize();
-				other_collider_to_collider.scale(1 / intersection_depth_magnitude);
-			}
-			std::cout << "Weight Ratio : " << weight_ratio << "\nThis Pushback: " << other_collider_to_collider.x() << " " << other_collider_to_collider.y() << std::endl
-				<< "That pushback: " << collider_to_other_collider.x() << " " << collider_to_other_collider.y() << std::endl
-				<< "Intersection depth: " << intersection_depth.x() << " " << intersection_depth.y() << std::endl;
-
-			//collider_to_other_collider = Vector_2D(collider_to_other_collider.x() / intersection_depth_magnitude, collider_to_other_collider.y() / intersection_depth_magnitude);
-			//collider_to_other_collider.scale(intersection_depth_magnitude);
-
+			collider_to_other_collider.normalize();
+			collider_to_other_collider.scale(intersection_depth);
 			game_object->_translation += collider_to_other_collider;
 		}
-
-		//Circle_2D collider		 = Circle_2D(_collider.radius(), _collider.translation() + _translation);
-		//Circle_2D other_collider = Circle_2D(game_object->_collider.radius(), game_object->_collider.translation() + game_object->_translation);
-		//float intersection_depth = collider.intersection_depth(other_collider);
-
-		//if (intersection_depth > 0.0f) 
-		//{
-
-		//	// pushes objects away from each other if intersecting / colliding
-		//	Vector_2D other_collider_to_collider = collider.translation() - other_collider.translation();
-		//	other_collider_to_collider.normalize();
-		//	other_collider_to_collider.scale(intersection_depth);
-		//	_translation += other_collider_to_collider;
-
-		//	Vector_2D collider_to_other_collider = other_collider.translation() - collider.translation();
-		//	collider_to_other_collider.normalize();
-		//	collider_to_other_collider.scale(intersection_depth);
-		//	game_object->_translation += collider_to_other_collider;
-		//}
 
 	}
 }
@@ -171,19 +112,6 @@ void Game_Object::render(Uint32, Assets* assets, SDL_Renderer* renderer, Configu
 	destination.y = (int)(_translation.y() - scene->camera_translation().y());
 	destination.w = _width;
 	destination.h = _height;
-
-	/*const float PI = 3.14159265f;
-	if (_velocity.magnitude() > 0) 
-	{
-		if (abs(_velocity.angle()) <= (PI / 2.f)) 
-		{
-			_flip = SDL_FLIP_NONE;
-		}
-		else 
-		{
-			_flip = SDL_FLIP_HORIZONTAL;
-		}
-	}*/
 
 	Texture* texture = (Texture*)assets->get_asset(_texture_id);
 	texture->render(renderer, nullptr, &destination, SDL_FLIP_NONE, _angle);

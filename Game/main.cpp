@@ -5,6 +5,7 @@
 #include "engine.h"
 #include "game_scene.h"
 #include "game_over_scene.h"
+#include "game_victory_scene.h"
 #include "input.h"
 #include "editor.h"
 #include "scene_manager.h"
@@ -22,6 +23,7 @@ int main(void)
 
 	scene_manager->add_scene(new Game_Scene());
 	scene_manager->add_scene(new Game_Over_Scene());
+	scene_manager->add_scene(new Game_Victory_Scene());
 	scene_manager->set_current_scene("Game");
 
 	const Uint32 milliseconds_per_seconds = 1000;

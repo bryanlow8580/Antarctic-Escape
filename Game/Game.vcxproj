@@ -152,13 +152,14 @@
     <ClCompile Include="assets.cpp" />
     <ClCompile Include="circle_2D.cpp" />
     <ClCompile Include="collider.cpp" />
-    <ClCompile Include="dino.cpp" />
     <ClCompile Include="editor.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="flag.cpp" />
+    <ClCompile Include="game_victory_scene.cpp" />
     <ClCompile Include="game_manager.cpp" />
     <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="game_over.cpp" />
     <ClCompile Include="game_over_scene.cpp" />
     <ClCompile Include="game_scene.cpp" />
     <ClCompile Include="ice.cpp" />
@@ -166,17 +167,13 @@
     <ClCompile Include="life.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="portal_entry.cpp" />
-    <ClCompile Include="portal_exit.cpp" />
-    <ClCompile Include="rectangle_2D.cpp" />
-    <ClCompile Include="running_dog.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="scene_manager.cpp" />
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vector_2D.cpp" />
-    <ClCompile Include="walking_dino.cpp" />
+    <ClCompile Include="game_victory.cpp" />
     <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -186,31 +183,28 @@
     <ClInclude Include="circle_2D.h" />
     <ClInclude Include="collider.h" />
     <ClInclude Include="configuration.h" />
-    <ClInclude Include="dino.h" />
     <ClInclude Include="editor.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="flag.h" />
+    <ClInclude Include="game_victory_scene.h" />
     <ClInclude Include="game_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="game_over.h" />
     <ClInclude Include="game_over_scene.h" />
     <ClInclude Include="game_scene.h" />
     <ClInclude Include="ice.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="life.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="portal_entry.h" />
-    <ClInclude Include="portal_exit.h" />
-    <ClInclude Include="rectangle_2D.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="running_dog.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="scene_manager.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="vector_2D.h" />
-    <ClInclude Include="walking_dino.h" />
+    <ClInclude Include="game_victory.h" />
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <ItemGroup>

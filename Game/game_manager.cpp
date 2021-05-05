@@ -46,7 +46,7 @@ void Game_Manager::update(Scene_Manager* scene_manager)
 	}
 	if (_player_victory)
 	{
-		scene_manager->set_current_scene("Victory");
+		scene_manager->set_current_scene("Game_Victory");
 	}
 }
 

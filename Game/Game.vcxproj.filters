@@ -24,9 +24,6 @@
     <ClCompile Include="assets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dino.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,16 +36,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="running_dog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="walking_dino.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="input.cpp">
@@ -69,19 +60,10 @@
     <ClCompile Include="circle_2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="portal_entry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="portal_exit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rectangle_2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="collider.cpp">
@@ -96,9 +78,6 @@
     <ClCompile Include="scene_manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game_over_scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="life.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -106,6 +85,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_over.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_victory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_over_scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_victory_scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -119,9 +110,6 @@
     <ClInclude Include="assets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,16 +119,10 @@
     <ClInclude Include="game_scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="running_dog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="walking_dino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="input.h">
@@ -167,19 +149,10 @@
     <ClInclude Include="circle_2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="portal_entry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="portal_exit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rectangle_2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="collider.h">
@@ -194,9 +167,6 @@
     <ClInclude Include="scene_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game_over_scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="life.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -204,6 +174,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_over.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_victory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_over_scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_victory_scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

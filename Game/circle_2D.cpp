@@ -1,11 +1,9 @@
 #include "circle_2D.h"
 
 Circle_2D::Circle_2D(float radius, Vector_2D translation) 
-	: Collider(radius, radius, translation) 
+	: _translation(translation.x(), translation.y())
 {
 	_radius = radius;
-	_width = radius;
-	_height = radius;
 }
 
 float Circle_2D::radius() 
@@ -16,8 +14,6 @@ float Circle_2D::radius()
 void Circle_2D::set_radius(float radius) 
 {
 	_radius = radius;
-	set_height(_radius);
-	set_width(_radius);
 }
 
 // Circle to circle intersection
@@ -42,34 +38,12 @@ float Circle_2D::intersection_depth(Circle_2D other)
 	}
 }
 
-// Circle to rectangle interaction
-Vector_2D Circle_2D::intersection_depth(Collider other)
+Vector_2D Circle_2D::translation()
 {
-	if (_radius == 0.0f || other.height() == 0.0f || other.width() == 0.0f)
-	{
-		return Vector_2D(0, 0);
-	}
+	return _translation;
+}
 
-	const float x_distance_to_other_collider = other.translation().x() - _translation.x();
-	const float y_distance_to_other_collider = other.translation().y() - _translation.y();
-
-	const float collider_height_combined = _radius + other.height();
-	const float collider_width_combined = _radius + other.width();
-
-
-	if (x_distance_to_other_collider < collider_width_combined)
-	{
-		if (y_distance_to_other_collider < collider_height_combined)
-		{
-			return Vector_2D(collider_width_combined - x_distance_to_other_collider, collider_height_combined - y_distance_to_other_collider);
-		}
-		else
-		{
-			return Vector_2D(0, 0);
-		}
-	}
-	else
-	{
-		return Vector_2D(0, 0);
-	}
+void Circle_2D::set_translation(Vector_2D translation)
+{
+	_translation = translation;
 }

@@ -28,8 +28,8 @@ Engine::Engine(std::string window_name, Configuration* config)
 	// Window properties
 
 	const char* game_title = window_name.c_str();
-	const int x			   = 100;
-	const int y			   = 100;
+	const int x			   = 50;
+	const int y			   = 50;
 
 	_window = SDL_CreateWindow(game_title, x, y, config->window_width, config->window_height, SDL_WINDOW_RESIZABLE);
 
@@ -152,7 +152,8 @@ void Engine::render(Uint32 milliseconds_to_simulate, Assets* assets, Scene* scen
 	const Uint8 alpha = 255;
 
 	std::vector<Game_Object*> sorted_game_objects = scene->get_game_objects();
-
+	
+	// Sorts Ice to render below everything
 	const struct
 	{
 		bool operator()(Game_Object* a, Game_Object* b)
